@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajaxSubmit</title>
+</head>
+<body>
+	<form id="form-create">
+		<select name="province" id="a">
+			<option value="0">普通</option>
+			<option value="1">一般</option>
+			<option value="2">贵重</option>
+			<option value="3">还行</option>
+		</select>
+		<select name="city" id="">
+	 		<option value="4">寻人</option>
+            <option value="5">认人</option>
+            <option value="6">活动展示</option>
+            <option value="7">寻物</option>
+		</select>
+		<button class="btn-primary">发布</button>
+	</form>
+	<script src="../jquery.js"></script>
+	<script>
+		  $("#a").ajaxSubmit({
+		      url: 'http://qa.xluob.com:8080/radishweb/question/create',
+		      form: '#form-create',
+		      type: 'post',
+		      selector: '.btn-primary',
+		      regs: {
+		        'province':/\S/,
+		        'city': /\S/
+		      },
+		        done: function (data) {
+		          console.log(data)
+		      }
+	    });
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+#canvas{
+	border: 1px solid #000;
+	width:300px;
+	height: 300px;
+	text-align:center;
+	line-height: 300px;
+}
+.red{
+	background-color: red; 
+}
+/*span{
+	background-color:green; 
+}*/
+.orange{
+	background-color:orange; 
+}
+.chengwidth{
+	text-align: center;
+	display: inline-block;
+	width:150px;
+}
+/*.fin{
+	background-color: red;
+	display: inline-block;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border-radius:3px; 
+    line-height: 30px;
+}
+.fin2{
+    color: #000;
+    background-color: #000;
+	display: inline-block;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border-radius:3px; 
+    line-height: 30px;
+}*/
+.activeClass{
+	border:1px solid #000; 
+}
+.errorClass{
+	border:1px solid #000; 
+	background-color:yellow;
+}
+.errorClass,.activeClass{
+	display: inline-block;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border-radius:3px; 
+    line-height: 30px;
+}
+.Square,.bar,.btn,.Square2{
+	width:400px;
+}
+.Square{
+	height: 200px;
+	background-image:url(../images/123.jpg); 
+	background-repeat: no-repeat;
+	margin: 20px auto;
+}
+.Square2{
+	height: 200px;
+	background-image:url(../images/muwu.jpg); 
+	background-repeat: no-repeat;
+	margin: 20px auto;
+}
+.bar{
+	height: 20px;
+	border:1px solid #000; 
+	margin:20px auto; 
+}
+.btn{
+	text-align: center;
+	margin:10px auto;
+}
+.bar-1{
+	/*width:400px;*/
+	height: 100%;
+	background:red; 
+}

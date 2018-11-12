@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://www.jq22.com/jquery/vue.min.js"></script><script src="http://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div class="wrap" id="app">
+    <div class="wrap_header">
+        <h1>你的选择：</h1>
+        <span class="cont" v-for="abc,i of cont">{{abc}}<div class="pos" @click="remove(abc,i)">x</div></span>
+    </div>
+    <div class="contenter">
+        <div class="block" v-for="item,i in date">
+            <div class="title">{{item.title}}</div>
+            <ul>
+                <li v-for="con in item.list" @click="addcontent(con.text,i)">{{con.text}}</li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+    <link rel="stylesheet" href="css.css">
+    <script src="js.js"></script>
+</body>
+</html>

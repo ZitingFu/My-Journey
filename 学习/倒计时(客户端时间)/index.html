@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" > 
+<title>JS实现倒计时(天数,时,分,秒)</title> 
+  
+</head> 
+<body> 
+  
+<h2>剩余时间:</h2> 
+<div class="timer"></div> 
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="js.js"></script>
+  <script>
+    $.leftTime("2018/9/15 09:57:11",function(d){
+      if(d.status){
+        var dd = (d.d+"天"+d.h+"时"+d.m+"分"+d.s+"秒")
+        console.log(dd)
+        $(".timer").html(dd)
+        //d.status 状态
+        //d.d 天
+        //d.h 时
+        //d.m 分
+        //d.s 秒
+      }
+    });
+
+  </script>
+</body> 
+</html>
+
+

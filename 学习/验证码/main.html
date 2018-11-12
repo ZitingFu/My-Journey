@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证码验证</title>
+	
+</head>
+<body>
+	<button id="TencentCaptcha"
+        data-appid="appId"
+        data-cbfn="callback"
+	>验证</button>
+	<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+	<script>
+		window.callback = function(res){
+		    console.log(res)
+		    // res（未通过验证）= {ret: 1, ticket: null}
+		    // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+		    if(res.ret === 0){
+		        alert(res.ticket)   // 票据
+		    }
+		}
+
+	</script>
+</body>
+</html>

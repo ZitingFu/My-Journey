@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无下载vue</title>
+</head>
+<body>
+	<div id="app">
+		<!-- <input v-show="show" type="text" v-model="name">
+		<input v-show="show" type="text" placeholder=" 写下你的计划"> -->
+		<ul>
+			<li v-for="item in name">{{item}}</li>
+		</ul>
+		<ul>
+			<li v-for="i in age">
+				<a href="">{{i.name}}</a>
+			</li>
+		</ul>
+		<a v-bind:href="url">点我</a>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+	var app3 = new Vue({
+	  el: '#app',//产生域应该作用在什么下
+	  data: {
+	  	name:["葱","将","蒜"],
+	  	url:"http://www.bootcss.com/",
+	  	age:[
+	  		{
+		  		name:"fuziting",
+		  		age:"18"
+	  		},
+	  		{
+		  		name:"yangnianchu",
+		  		age:"18"
+	  		}
+	  	]
+
+	  }
+	})
+	</script>
+
+</body>
+</html>

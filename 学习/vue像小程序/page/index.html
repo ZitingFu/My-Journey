@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-app</title>
+	<script src="../js/vue.js"></script>
+	<link rel="stylesheet" href="../css/css.css">
+	<!-- <script src="https://unpkg.com/vue"></script> -->
+</head>
+<body>
+	<!-- vue-app是根容器 -->
+	<div id="Vue-app">
+		<!-- <h1>{{name}}</h1>
+		<button v-on:click="zao('fdsfgas')">点击</button>
+		<a v-bind:href="href">点击跳转</a>
+		<input type="text" v-bind:value="fuziting">
+		<p v-html="websiteTag">websiteTag</p> -->
+		<!-- 点击事件 -->
+		<<!-- button v-on:click="add(10)">涨10岁</button>
+		<button v-on:click="reduce(1)">减一岁</button>
+		<p>我今年{{age}}</p>
+		<div id="canvas" v-on:mousemove="updateXY">
+		{{x}},{{y}}
+			<span  v-on:mousemove.stop>停止</span>
+		</div>
+		<a v-on:click.prevent="click" href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">点击不跳转</a> -->
+		<!-- 键盘事件 -->
+		<<!-- h5>键盘事件</h5>
+		<label for="">姓名：</label>
+		<input ref="name" type="text" v-on:keyup="keyup">
+		<label for="">年龄：</label>
+		<input type="text"> -->
+		<!-- 计算属性 -->
+		<!-- <p>
+			<button v-on:click="a++">Add to A</button>
+			<button v-on:click="b++">Add to B</button>
+		</p>
+		<p>A-{{a}}</p>
+		<p>B-{{b}}</p>
+		<p>Add+A={{number1}}</p>
+		<p>Add+B={{number2}}</p> -->
+		<!-- 点击变色 -->
+		<!-- <span v-on:click="jj = !jj" v-bind:class="{red:jj}">123</span>
+		<p>
+			<p>
+				<button v-on:click="orange=!orange">点击变色</button>
+				<button v-on:click="chengwidth = !chengwidth">点击长度</button>
+			</p>
+			<p><span v-bind:class="{orange:orange,chengwidth:chengwidth}">收藏</span></p>
+		</p>
+
+		<p>
+			<button v-on:click="orange=!orange,chengwidth = !chengwidth" v-bind:class="{orange:orange,chengwidth:chengwidth}">颜色/长度</button>
+		</p>
+		<p>
+			<span v-on:click="fin=!fin,fin2=!fin2"  v-bind:class="{fin:fin,fin2:fin2}">收藏</span>
+		</p> -->
+
+		<!-- <p>
+			<button v-bind:class="{fin:true}"  v-on:click="on(1)">404</button>
+			<button v-bind:class="{fin:true}"  v-on:click="on(2)">200</button>
+			<input type="text" value="123" ref="name">
+			<input type="text" value="18" ref="age">
+			<input v-on:keyup.enter="submit()">
+		</p> -->
+
+	<!-- 	<button v-on:click="Success = !Success">成功</button>
+		<button v-on:click="fail = !fail">失败</button>
+		<p v-if="Success">200网络链接成功</p>
+		<p v-if="fail">404网络链接错误</p> -->
+
+		<!-- <div data-id="1" ref="name" v-on:click="dianji(1)" v-bind:class="[num==1?errorClass:activeClass]"></div>
+		<div data-id="2" ref="name" v-on:click="dianji(2)" v-bind:class="[num==2?errorClass:activeClass]"></div>
+		<p v-html="template"></p> -->
+		<!-- <ul>
+			<li v-for="(item, index) in mai">
+				<u>{{ index }}</u>
+				<u>{{item.name}}</u>
+				<i>{{item.age}}</i>
+				<i>{{item.sex}}</i>
+			</li>
+		</ul> -->
+		<!-- <ul> -->
+		<!-- 	<ul v-for="(item, index) in mai">
+				<li v-for="(val,key) in item">
+					<u>{{ index }}</u>
+					<u>{{key}}:{{val}}</u>
+				</li>
+			</ul>
+		</ul>
+		<div v-for="(item, index) in mai">
+			<p v-for="(val,key) in item">{{ index }}{{key}}:{{val}}</p>
+		</div> -->
+		<!-- 图片 -->
+		<div v-bind:class="Square"></div>
+		<!-- 进度条 -->
+		<div class="bar">
+			<div v-bind:style="{width:hideLoading+'%'}" class="bar-1"></div>
+		</div>
+		<!-- 控制按钮 -->
+		<div class="btn">
+			<button v-on:click="start()">开始</button>
+			<button v-on:click="jia()" v-show="ended">急速</button>
+		</div>
+	</div>
+
+	<!-- 一定要置低 --> 
+  	<script src="../js/index.js"></script> 
+</body>
+</html>

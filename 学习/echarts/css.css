@@ -1,0 +1,21 @@
+#box{
+	overflow: hidden;
+}
+
+#Pie{
+	border:1px solid #cecece;
+	width: 48%;
+	height: 500px;
+	float: left;
+}
+#Bar{
+	border:1px solid #cecece;
+	width:48%;
+	height: 500px;
+	float: right;
+}
+#Ring{
+	border:1px solid #cecece;
+	width:48%;
+	height: 500px;
+}

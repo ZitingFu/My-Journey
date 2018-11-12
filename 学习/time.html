@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <span class="timespan"></span>
+</body>
+<script src="jquery.js"></script>
+<script>
+  var starttime = new Date("2018/9/15 09:57:11");
+  setInterval(function () {
+    var nowtime = new Date();
+    var time = starttime - nowtime;
+    var day = parseInt(time / 1000 / 60 / 60 / 24);
+    var hour = parseInt(time / 1000 / 60 / 60 % 24);
+    var minute = parseInt(time / 1000 / 60 % 60);
+    var seconds = parseInt(time / 1000 % 60);
+    $('.timespan').html(day + "天" + hour + "小时" + minute + "分钟" + seconds + "秒");
+  }, 1000);
+</script>
+</html>
+  <!-- {if $item.expire !=0} -->
+                   <!-- 有倒计时 -->
+                   <!-- {if $item.status !=11} -->
+
+
+
+
+
+
+<!-- {/if}
+                    {else}
+                       <p class=" p-t13">{$item.user_name}
+                       <label class="pull-right y-time">{$item.time}
+                       </label>
+                     </p> 
+                     <p class="p-t10 p-b14">
+                       <span class="y-center"> {$item.gen_name}</span>
+                     </p> 
+                    {/if} -->

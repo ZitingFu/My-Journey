@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UFT-8">
+ 
+<script src="https://cdn.bootcss.com/jquery/1.11.1-beta1/jquery.js"></script>
+<script src="./FileSaver.js" charset="utf-8"></script>
+</head>
+<body >
+ 
+ 
+<div>
+    <div>
+        <input type="file" id="files" style="display:none" onchange="fileimport();"/>
+        <input type="button" id="import" value="导入"/>
+        <input type="button" id="export" value="导出"/>
+    </div>
+</div>
+<script>
+var txtdata;
+function fileimport(){
+    var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+    console.log(selectedFile.length);
+    var name = selectedFile.name;//读取选中文件的文件名
+    var size = selectedFile.size;//读取选中文件的大小
+    console.log("文件名:"+name+"大小："+size);
+    var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
+    reader.readAsText(selectedFile,'gb2312');//读取文件的内容，注意编码方式
+    reader.onload = function(){
+        console.log(this.result);//当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
+        $('<pre>' + this.result + '</pre>').appendTo('body');
+        txtdata = this.result;
+    };
+}
+ 
+ 
+$(document).ready(function(){
+    //alert("start");
+    $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
+        $("#files").click();
+    });
+    $("#export").click(function(){
+        var content = "这是直接使用HTML5进行导出的:"+txtdata;
+        var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "file.txt");//saveAs(blob,filename) //仅限于chorme的下载目录里
+    });
+})
+</script>
+</body>
+</html>
+　　
+
+2.图片的一个上传。
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ 
+<style type="text/css">
+*{margin:0px;}
+body{background:url("http://a1.qpic.cn/psb?/V108KcrI4Zm6Um/QqRefo*DZf*qDbFYlgL8z0mtU4IO8C.CPrQymvR.I3o!/b/dHUAAAAAAAAA&bo=AASAAgAAAAARB7Y!&rf=viewer_4");}
+#Message{width:602px;height:140px;padding:10px; background:#fff;  margin:100px auto; border-radius:5px;
+            position:relative;}
+#Message #MesCon{width:600px;height:100px; border:1px solid #ddd; border-radius:5px;}
+#Message #MesCon .imgBut{width:100px;height:100px; border-right:1px solid #ddd;float:left; font-size:12px; color:#666; text-align:center; line-height:150px; background:url("http://a1.qpic.cn/psb?/V108KcrI4Zm6Um/GTIZ8A5q1FSHpFqxM8xuM*KVuP5Sr*wSd4im08Mi5EE!/b/dHUAAAAAAAAA&bo=HgAXAAAAAAADACw!&rf=viewer_4") no-repeat 33px 30px;}
+#Message #MesCon .Edit{width:499px;height:100px; float:right; }
+ 
+#Message span.fb{width:80px;height:30px; background:#ff9933; color:#fff; text-align:center; line-height:30px;
+                display:block; margin-top:10px; float:right; border-radius:5px; font-size:12px; font-family:"微软雅黑";}
+#Message .upload{width:620px;height:220px; background:rgba(0,0,0,0.5); position:absolute;left:0px; top:160px;
+                box-shadow:0px 0px 10px #fff;display:none; }
+#Message .upload p{width:100%; height:230px; position:absolute; left:0px; top:0px;color:#fff;  font-size:26px; text-align:center;line-height:220px;}
+#Message .upload img{margin:20px 8px; border:2px solid #fff;}
+ 
+.shuoshuo{width:600px; min-height:300px; border:1px solid #ddd; border-radius:5px; margin:10px auto; background:#fff; padding:20px; display:none;
+}
+.shuoshuo .box{border-bottom:1px dotted #ddd; font-size:14px; line-height:30px;}
+</style>
+ 
+ </head>
+ <body>
+ 
+ <div id="Message">
+ 
+    <!--发表说说框开始-->
+    <div id="MesCon">
+        <div class="imgBut">上传图片</div>
+        <div class="Edit" contenteditable="true"></div>
+    </div>
+    <!--发表说说框结束-->
+ 
+    <!--发表按扭开始-->
+    <span class="fb">发表</span>
+    <!--发表按扭结束-->
+     
+    <!--图片拖拽区开始-->
+    <div class="upload">
+        <p class="tis">请将图片拖拽到此区域</p>
+         
+    </div>
+    <!--图片拖拽区结束-->
+ 
+ </div>
+ 
+ 
+<!--说说内容开始-->
+<div class="shuoshuo">
+ 
+</div>
+<!--说说内容结束-->
+<script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+ 
+<script type="text/javascript">
+    //点击图片上传按扭
+    $(".imgBut").click(function(){
+        $(".upload").slideToggle(); //自动收缩和展开
+    });
+ 
+ 
+    //找到要拖进去的目标元素
+    var oDiv=$(".upload").get(0);
+    var op=$(".upload p.tis");
+ 
+    //当进入
+    oDiv.ondragenter=function(){
+        op.html("可以释放元素");
+    }
+    //离开
+    oDiv.ondragleave=function(){
+        op.html("请将图片拖拽到此区域");
+    };
+    //在内部移动
+    oDiv.ondragover=function(e){
+         
+        e.preventDefault();
+         
+    }
+ 
+ 
+//释放
+    oDiv.ondrop=function(e){
+        e.preventDefault();
+        //获取拖过来的文件
+        var fs=e.dataTransfer.files;
+        var len=fs.length; //获取文件个数
+        for(var i=0;i<len;i++){
+            var _type=fs[i].type;
+                 
+            if(_type.indexOf("image")!=-1){//判断他是不是图片文件
+                 
+                var fd=new FileReader();
+                fd.readAsDataURL(fs[i]);
+                fd.onload=function(){
+                    var oImg=$("<img src='' width='180' height='180' />");
+                        oImg.attr("src",this.result);
+                    $(".upload").append(oImg);
+                    op.html("");
+                }
+ 
+ 
+            }else{
+                alert("请，上传图片文件！！");
+            }
+        }
+    }
+ 
+ 
+//点击发表说说按扭
+$("span.fb").click(function(){
+     
+    $(".upload").slideUp();
+    var txt=$(".Edit").text();
+    if(txt==""){
+        $(".Edit").focus();
+    }else{
+        $(".shuoshuo").show();
+        var html=$(".shuoshuo").html();
+        $(".shuoshuo").html(html+"<div class='box'>"+txt+"<br/>"+$(".upload").html()+"</div>");
+    }
+     
+    $(".upload").html("");
+    $(".Edit").text("");
+});
+</script>
+ </body>
+</html>

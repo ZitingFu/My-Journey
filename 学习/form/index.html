@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>印刷文字识别-银行卡识别 </title>
+	<link rel="stylesheet" href="1.css">
+</head>
+<body>
+<!-- 	<div class="box">
+		<div>
+			<img id="logoimgimg" src="images/2.jpg" alt="" >
+			  
+		</div>
+		<div></div>
+	</div>	
+	<p> -->
+		<!-- <input type="file" >
+		<input type="file"  name="avatar" id="logowidth">
+	</p> -->
+	
+	<form action="" id="form">
+		 用户名：<input type="text" name="user"/></br>
+		 密码：<input type="password" name="pass" /></br>
+		 性别：<input type="radio" name="sex" value="男"/>男
+		 <input type="radio" name="sex" value="女"/>女
+		 头像：<input type="file" id="file" name="file"/></br>
+		 <button id="btn" type="button">提交</button>
+	</form>
+	<div class="con"></div>
+
+	<script src="js/jquery-3.3.1.js"></script>
+	<script>
+		var imgs=[];//存储图片链接
+		 //为文件上传添加change事件
+		 var fileM=document.querySelector("#file");
+		$("#file").on("change",function(){
+			  //获取文件对象，files是文件选取控件的属性，存储的是文件选取控件选取的文件对象，类型是一个数组
+			  var fileObj=fileM.files[0];
+			  //创建formdata对象，formData用来存储表单的数据，表单数据时以键值对形式存储的。
+			  var formData=new FormData();
+			  formData.append('file',fileObj);
+
+			  //创建ajax对象
+			 var ajax=new XMLHttpRequest();
+			 //发送POST请求
+			ajax.open("POST","/radishweb/upload/ocr",true);
+			ajax.send(formData);
+			ajax.onreadystatechange=function(){
+				if (ajax.readyState == 4) {
+					if (ajax.status>=200 &&ajax.status<300||ajax.status==304) {
+
+						console.log(JSON.parse(ajax.responseText));
+						// var obj=JSON.parse(ajax.responseText);
+					}
+				}
+			}
+		});	
+	</script>
+</body>
+</html>

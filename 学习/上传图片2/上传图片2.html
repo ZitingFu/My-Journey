@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #cecece;
+		}
+	</style>
+</head>
+<body>
+	<img id="logoimgimg" src="123.jpg" alt="">
+	<input type="file" id="logowidth">
+	<script src="jquery.js"></script>
+	<script>
+	$("#logowidth").change(function(){
+		var logowidth = $("#logowidth").get(0).files[0];
+	 	var reader = new FileReader();
+	 	 reader.readAsDataURL(logowidth);
+	 	 reader.onload=function(e){
+	 	 	$("#logoimgimg").get(0).src = e.target.result;
+	 	 	var images = e.target.result
+
+
+			// $.ajax({
+			// 	type: 'post', 
+		 //        url: '/radishweb/upload/imgads',
+		 //        data: {
+		 //        	file:images
+		 //        },
+		 //        success: function(data){ 
+		 //        	$("#logoimgimg").get(0).src	= (data.data.url.s)
+		        	
+		 //        }
+			// })
+	 	 }
+	})
+	</script>
+</body>
+</html>
